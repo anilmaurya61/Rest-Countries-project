@@ -30,7 +30,7 @@
     font-size: var(--font-size-homepage);
     line-height: 1.6;
     color: var(--very-dark-blue-text);
-    background-color: var(--very-dark-blue-bg);
+    /* background-color: var(--very-dark-blue-bg); */
   }
   
   h1, h2, h3 {

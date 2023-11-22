@@ -1,0 +1,23 @@
+.country-card-container{
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+.filter-container{
+    display: flex;
+    margin: 2rem 5rem;
+    justify-content: space-between;
+}
+.filter-container > input{
+    width: 15rem;
+    background-color: #fff;
+    border-radius: 1.5rem;
+    padding: 1rem 1.5rem;
+    font-size: 15px;
+    border: none;
+    box-shadow: 5px 5px 10px grey;
+}
+.select{
+    width: 15rem;
+}

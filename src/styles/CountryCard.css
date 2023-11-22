@@ -1,0 +1,28 @@
+.card-container {
+    height: 34rem;
+    width: 23rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    margin: 1rem;
+}
+
+.card-container:hover {
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.flag img {
+    height: 17rem;
+    width: 100%;
+}
+.card-container h1{
+    padding: 1rem 2rem;
+    line-height: 2.5rem;
+}
+.description{
+    padding: 1rem 2rem;
+    line-height: 2rem;
+}
+.description p{
+    font-size: 1.2rem;
+}
