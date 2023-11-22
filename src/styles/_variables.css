@@ -1,0 +1,71 @@
+:root {
+    /* Colors */
+    --dark-blue: hsl(209, 23%, 22%);
+    --very-dark-blue-bg: hsl(207, 26%, 17%);
+    --very-dark-blue-text: hsl(200, 15%, 8%);
+    --dark-gray-input: hsl(0, 0%, 52%);
+    --very-light-gray-bg: hsl(0, 0%, 98%);
+    --white: hsl(0, 0%, 100%);
+  
+    /* Typography */
+    --font-family: 'Nunito Sans', sans-serif;
+    --font-weight-light: 300;
+    --font-weight-normal: 400; /* Default font-weight */
+    --font-weight-bold: 600;
+    --font-weight-extra-bold: 800;
+  
+    --font-size-homepage: 14px;
+    --font-size-detail-page: 16px;
+  }
+  
+  /* Reset some default styles */
+  body, h1, h2, h3, p, ul {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-homepage);
+    line-height: 1.6;
+    color: var(--very-dark-blue-text);
+    background-color: var(--very-dark-blue-bg);
+  }
+  
+  h1, h2, h3 {
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-bold);
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  h3 {
+    font-size: 1.8rem;
+  }
+  
+  p {
+    font-size: var(--font-size-homepage);
+  }
+  
+  /* For detail page */
+  .detail-page {
+    font-size: var(--font-size-detail-page);
+  }
+  
+  /* Other styling using variables */
+  input {
+    background-color: var(--dark-gray-input);
+  }
+  
+  .light-mode {
+    background-color: var(--very-light-gray-bg);
+    color: var(--dark-blue);
+  }
+  
