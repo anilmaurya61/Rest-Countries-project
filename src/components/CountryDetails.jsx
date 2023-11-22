@@ -1,0 +1,108 @@
+import React, { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import '../styles/CountryDetails.css';
+
+const CountryDetails = () => {
+    const { id } = useParams();
+    const [country, setCountry] = useState();
+
+    useEffect(() => {
+        getCountryDetails(id);
+    }, [id]);
+
+    async function getCountryDetails(id) {
+        try {
+            let countryData = await fetch(`https://restcountries.com/v3.1/all`);
+            countryData = await countryData.json();
+            countryData = countryData.find((country) => country.cca3 === id);
+            setCountry(countryData);
+        } catch (error) {
+            console.error('Error fetching country details:', error);
+        }
+    }
+
+    if (!country) {
+        return <div>Loading...</div>;
+    }
+
+    const {
+        name: { common, nativeName },
+        flags: { png },
+        population,
+        region,
+        subregion,
+        capital,
+        topLevelDomain,
+        currencies,
+        languages,
+        borders,
+    } = country;
+
+    return (
+        <>
+            <div className="container">
+                <Link to="/" className="backtohome">
+                    <button>Back To Home</button>
+                </Link>
+                <section className="country-details">
+                    <div className="country-flag">
+                        <img src={png || "#"} alt={`${common || "N/A"} Flag`} />
+                    </div>
+                    <div className="country-info">
+                        <div className="country-title-container">
+                            <h1 className="country-title">{common || "N/A"}</h1>
+                        </div>
+                        <div className="details-container">
+                            <div className="details-col">
+                                <ul>
+                                    <li>
+                                        <strong>native name: </strong> {nativeName?.spa?.common || "N/A"}
+                                    </li>
+                                    <li>
+                                        <strong>population: </strong> {population || "N/A"}
+                                    </li>
+                                    <li>
+                                        <strong>region: </strong> {region || "N/A"}
+                                    </li>
+                                    <li>
+                                        <strong>sub region: </strong> {subregion || "N/A"}
+                                    </li>
+                                    <li>
+                                        <strong>capital: </strong> {capital || "N/A"}
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="details-col">
+                                <ul>
+                                    <li>
+                                        <strong>top-level domain: </strong> {topLevelDomain || "N/A"}
+                                    </li>
+                                    <li>
+                                        <strong>currencies: </strong> {currencies?.USD?.name || "N/A"}
+                                    </li>
+                                    <li>
+                                        <strong>languages: </strong> {languages?.spa || "N/A"}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="border-countries">
+                            <strong>border countries:</strong>
+                            <ul>
+                                {borders?.map((border) => (
+                                    <Link to={`/country/${border}`} key={border} data-border={border}>
+                                        <button className="btn" data-country-name={common}>
+                                            {border}
+                                        </button>
+                                    </Link>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </>
+    );
+};
+
+export default CountryDetails;
