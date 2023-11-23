@@ -4,8 +4,12 @@ import Home from './pages/Home';
 import CountryCardDetails from './components/CountryDetails';
 import Header from './components/Header';
 import { ThemeProvider } from './Theme/ThemeContext'; 
+import './styles/_variables.css';
 
 function App() {
+
+  // const { darkMode } = useTheme();
+
   return (
     <Router>
       <ThemeProvider>

@@ -12,12 +12,12 @@ const Header = () => {
     <>
       <div className={`header-container ${darkMode ? 'dark' : 'light'}`}>
         <h1>Where in the world?</h1>
-        <a href="#" className="toggle" onClick={toggleTheme}>
+        <div className="toggle" onClick={toggleTheme}>
           <div className="togglediv">
             <img className="modeIcon" src={darkMode ? lightModeIcon : darkModeIcon } alt="" />
             <span>{darkMode ? 'Light Mode' : 'Dark Mode'}</span>
           </div>
-        </a>
+        </div>
       </div>
     </>
   );

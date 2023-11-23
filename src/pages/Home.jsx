@@ -26,14 +26,14 @@ export default function Home() {
     let countryData = useCountryData(setSearchFilter);
 
     function searchFunction(text, option) {
-        if (!text && !option) {
-            setSearchFilter(countryData);
+        if (!text || option == 'Show All') {
+            setSearchFilter(...countryData);
         }
         let lowercaseSearchText = text.toLowerCase();
         setSearchFilter(
             countryData.filter((country) => {
-                const regionMatches = option && option !== 'Show All' ? country?.region.includes(option) : true;
                 const nameIncludesText = text ? country?.name?.common.toLowerCase().includes(lowercaseSearchText) : true;
+                const regionMatches = option && option !== 'Show All' ? country?.region.includes(option) : true;
                 return text ? nameIncludesText && regionMatches : regionMatches;
             })
         );
@@ -43,6 +43,20 @@ export default function Home() {
         return <h1>Loading...</h1>;
     }
 
+    const selectStyles = {
+        control: (styles) => ({
+            ...styles,
+            backgroundColor: darkMode ? '#fff' : 'white',
+            color: darkMode ? 'white' : 'black',
+        }),
+        option: (styles, { isFocused, isSelected }) => ({
+            ...styles,
+            backgroundColor: isSelected ? (darkMode ? '#164240' : '#d8e1e9') : isFocused ? (darkMode ? '#2b3945' : '#e1f1f8') : null,
+            color:isSelected ? 'white' : darkMode ? 'black' : 'black',
+        }),
+    };
+    
+    
     return (
         <>
             <div className={`filter-container ${darkMode ? 'dark' : 'light'}`}>                
@@ -58,6 +72,7 @@ export default function Home() {
                 <Select 
                     className="select"
                     options={options}
+                    styles={selectStyles}
                     onChange={(selectedOption) => {
                         setOption(selectedOption);
                         searchFunction(searchText, selectedOption.value);
@@ -71,8 +86,7 @@ export default function Home() {
                     </Link>
                 ))}
             </div>
-            <style>{`body { background-color: ${darkMode ? '#2b3945' : '#ffffff'}; }`}</style>
-
+            <style>{`body { background-color: ${darkMode ? '#2b3945' : '#ffffff'}; Color : black}`}</style>
         </>
     );
 }

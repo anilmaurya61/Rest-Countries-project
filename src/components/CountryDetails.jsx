@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import '../styles/CountryDetails.css';
 import '../styles/_variables.css';
-import { useTheme } from '../Theme/ThemeContext'; 
+import { useTheme } from '../Theme/ThemeContext';
 
 
 const CountryDetails = () => {
@@ -41,10 +41,10 @@ const CountryDetails = () => {
         languages,
         borders,
     } = country;
-    console.log(Object.values(currencies)[0].name)
+
     return (
         <>
-            <div className="container">
+            <div className={`container ${darkMode ? 'dark' : 'light'}`}>
                 <Link to="/" className="backtohome">
                     <button>Back To Home</button>
                 </Link>
@@ -79,7 +79,7 @@ const CountryDetails = () => {
                             <div className="details-col">
                                 <ul>
                                     <li>
-                                        <strong>top-level domain: </strong> { tld.join(", ") || "N/A"}
+                                        <strong>top-level domain: </strong> {tld.join(", ") || "N/A"}
                                     </li>
                                     <li>
                                         <strong>currencies: </strong> {Object.values(currencies)[0].name || "N/A"}
