@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import '../styles/CountryDetails.css';
+import '../styles/_variables.css';
+import { useTheme } from '../Theme/ThemeContext'; 
+
 
 const CountryDetails = () => {
     const { id } = useParams();
     const [country, setCountry] = useState();
+    const { darkMode } = useTheme();
 
     useEffect(() => {
         getCountryDetails(id);
@@ -101,6 +105,7 @@ const CountryDetails = () => {
                     </div>
                 </section>
             </div>
+            <style>{`body { background-color: ${darkMode ? '#2b3945' : '#ffffff'}; }`}</style>
         </>
     );
 };

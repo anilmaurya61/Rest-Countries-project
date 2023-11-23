@@ -1,24 +1,26 @@
-import React, { useState } from 'react';
-import '../styles/Header.css'
-import darkMode from '../../public/dark-mode.png'
-import lightMode from '../../public/light-mode.png'
-import '../styles/_variables.css'
+import React from 'react';
+import '../styles/Header.css';
+import darkModeIcon from '../../public/dark-mode.png';
+import lightModeIcon from '../../public/light-mode.png';
+import '../styles/_variables.css';
+import { useTheme } from '../Theme/ThemeContext'; 
 
 const Header = () => {
-    const [Mode, setMode] = useState(true);
-    return (
-        <>
-            <div className="header-container">
-                <h1>Where in the world?</h1>
-                <a href="#" className="toggle" onClick={()=> setMode(!Mode)}>
-                    <div className='togglediv'>
-                        <img className="modeIcon" src={Mode? darkMode : lightMode} alt="" />
-                        <span>{Mode ? "Dark Mode": "Light Mode"}</span>
-                    </div>
-                </a>
-            </div>
-        </>
-    )
-}
+  const { darkMode, toggleTheme } = useTheme(); 
 
-export default Header
+  return (
+    <>
+      <div className={`header-container ${darkMode ? 'dark' : 'light'}`}>
+        <h1>Where in the world?</h1>
+        <a href="#" className="toggle" onClick={toggleTheme}>
+          <div className="togglediv">
+            <img className="modeIcon" src={darkMode ? darkModeIcon : lightModeIcon} alt="" />
+            <span>{darkMode ? 'Dark Mode' : 'Light Mode'}</span>
+          </div>
+        </a>
+      </div>
+    </>
+  );
+};
+
+export default Header;
