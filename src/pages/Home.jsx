@@ -55,7 +55,7 @@ export default function Home() {
                     searchFunction(e.target.value, option);
                 }}
             />
-                <Select
+                <Select 
                     className="select"
                     options={options}
                     onChange={(selectedOption) => {

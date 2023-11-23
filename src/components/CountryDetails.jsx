@@ -36,12 +36,12 @@ const CountryDetails = () => {
         region,
         subregion,
         capital,
-        topLevelDomain,
+        tld,
         currencies,
         languages,
         borders,
     } = country;
-
+    console.log(Object.values(currencies)[0].name)
     return (
         <>
             <div className="container">
@@ -60,7 +60,7 @@ const CountryDetails = () => {
                             <div className="details-col">
                                 <ul>
                                     <li>
-                                        <strong>native name: </strong> {nativeName?.spa?.common || "N/A"}
+                                        <strong>native name: </strong> {Object.values(nativeName)[0].common || "N/A"}
                                     </li>
                                     <li>
                                         <strong>population: </strong> {population || "N/A"}
@@ -79,13 +79,13 @@ const CountryDetails = () => {
                             <div className="details-col">
                                 <ul>
                                     <li>
-                                        <strong>top-level domain: </strong> {topLevelDomain || "N/A"}
+                                        <strong>top-level domain: </strong> { tld.join(", ") || "N/A"}
                                     </li>
                                     <li>
-                                        <strong>currencies: </strong> {currencies?.USD?.name || "N/A"}
+                                        <strong>currencies: </strong> {Object.values(currencies)[0].name || "N/A"}
                                     </li>
                                     <li>
-                                        <strong>languages: </strong> {languages?.spa || "N/A"}
+                                        <strong>languages: </strong> {Object.values(languages).join(", ") || "N/A"}
                                     </li>
                                 </ul>
                             </div>
